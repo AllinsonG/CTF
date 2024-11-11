@@ -15,15 +15,15 @@ TSA{RE_101_522eb6a4814c2b9eb70b7d1eb4af052b}
 
 We got a file which is ELF 64-bit which when executed it request an input of name. After checking the protection that exist on the file using Checksec, it found that all of the protections are up. Then we decompile it using IDA and found two interesting function, which is `m` function,`sub_11c9` function and `cr` function. Here's a picture of the each function details:
 
-<figure><img src="broken-reference" alt=""><figcaption><p>Main Function</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/8.png" alt=""><figcaption><p>Main Function</p></figcaption></figure>
 
 `m` function in here is used to get the input from the user and split it into two part. The first part stored in array l and the other half stored in array r.
 
-<figure><img src="broken-reference" alt=""><figcaption><p>sub_11c9 Function</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/10.png" alt=""><figcaption><p>sub_11c9 Function</p></figcaption></figure>
 
 Went to another function which `sub_11c9 function`. We got a function that doing a XOR operation for array l with 0xBF and then the yield of the XOR operation used in another XOR operation with i value which is the length of array l. And then check if it's equal to that value of array v3, if it's not then it end the program.
 
-<figure><img src="broken-reference" alt=""><figcaption><p>cr Function</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/9.png" alt=""><figcaption><p>cr Function</p></figcaption></figure>
 
 Last but not least the `cr` function which also doing alike with `sub_11c9 function`. Where this function done a XOR operation within three variable within as follows i variable which is the length of array r then do XOR operation with the result of XOR operation of array in l with array in r. Then the outcome compare with the array in v2, if it's not equal then it would end the program.
 
